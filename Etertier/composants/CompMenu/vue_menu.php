@@ -11,7 +11,7 @@
 					$this->contenu .= "<a href=index.php?module=connexion&action=connexion>Connexion</a> <a href=index.php?module=connexion&action=inscription>Inscription</a></nav>";
 					
 				} else{
-					$this->contenu .= $_SESSION['login']." - <a href=index.php?module=connexion&action=deconnexion>Déconnexion</a></nav>";
+					$this->contenu .= "<i class=\"fa-solid fa-user\"></i>" . $_SESSION['login']." - <a href=index.php?module=connexion&action=deconnexion>Déconnexion</a></nav>";
 				}
 		}
 
