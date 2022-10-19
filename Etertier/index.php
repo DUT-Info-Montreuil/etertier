@@ -1,11 +1,18 @@
-
 <?php
+	
+	session_start();
+	// if(isset($_POST['token'])) {
+	// 	unset($_POST['token']);
+	// 	echo 'Token supprimer';
+	// }
+	include_once('controleur.php');
+    include_once('connexion.php');  
 
-session_start();
+	$affichage;
+    Connexion::initConnexion();
 
-require_once "connexion.php";
-Connexion::initConnexion();
+	$controleur = new Controleur();
+	$controleur->exec();
 
-require_once "template.php";
-
+	include_once('template.php');
 ?>
