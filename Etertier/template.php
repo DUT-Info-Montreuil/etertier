@@ -9,13 +9,15 @@
 
 
 
-	<title>MVC3</title>
+	<title>ETERTIER</title>
 	
 </head>
 <body>
 	<script src ="bootstrap/js/bootstrap.bundle.min.js"></script>
     <header>
 		<?php echo $menu->affiche();?>
+
+
     </header>
 
     <main>
