@@ -6,18 +6,19 @@
 
 		public function __construct (){
 			$this->contenu = '<div>';
+				
+				$this->contenu .= 
+				"<nav>
+					<ul class=\"nav justify-content-center\">
+						<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php\">Acceuil</a></li>
+						<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php?module=jeux\">Jeux</a></li>
+						<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php\">Liste Rédacteurs</a></li>
+						<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php\">Liste Membres</a></li>
+						<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php?module=article\">Articles</a></li>
+						<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php\">FAQ</a></li>
+					</ul>
+				</nav>";
 				if(!isset($_SESSION['login'])){
-					$this->contenu .= 
-					"<nav>
-						<ul class=\"nav justify-content-center\">
-							<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\">Acceuil</a></li>
-							<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\">Jeux</a></li>
-							<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\">Liste Rédacteurs</a></li>
-							<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\">Liste Membres</a></li>
-							<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\">Articles</a></li>
-							<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\">FAQ</a></li>
-						</ul>
-				  </nav>";
 				  $this->contenu .= 
 				  "<nav>
 					  <ul class=\"nav justify-content-end\">

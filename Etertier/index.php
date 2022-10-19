@@ -19,7 +19,7 @@
 				break;
 			case 'article':
 				include_once('modules/ModArticles/mod_article.php');
-				$module = new ModArticles();
+				$module = new ModArticle();
 				break;
 			case 'jeux':
 				include_once('modules/ModJeux/mod_jeux.php');

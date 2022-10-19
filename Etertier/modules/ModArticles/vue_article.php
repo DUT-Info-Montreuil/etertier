@@ -9,7 +9,7 @@ class VueArticle extends VueGenerique{
 	public function afficher_liste($tab){
 		echo '<h2>Les Articles :</h2>';
 		foreach($tab as $cle=>$val){
-			echo '<p><a href="index.php?module=article&action=liste&id=' . $val['idArticle'] . '">' . $val['nom'] . '</a></p>';
+			echo '<p><a href="index.php?module=article&action=details&id=' . $val['idArticle'] . '">' . $val['nom'] . '</a></p>';
 		}
 	}
 

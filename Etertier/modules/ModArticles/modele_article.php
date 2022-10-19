@@ -7,15 +7,15 @@ class ModeleArticle extends Connexion{
 	}
 
 	public function get_liste(){
-		$selecPrepare = self::$bdd->prepare('SELECT nom FROM articles');
+		$selecPrepare = self::$bdd->prepare('SELECT idArticle, nom FROM articles');
 		$selecPrepare->execute();
 		$tab = $selecPrepare->fetchall();
 		return $tab;
 	}
 
 	public function get_details(){
-		if(isset($_GET['idArticle'])){
-			$t = array($_GET['idArticle']);
+		if(isset($_GET['id'])){
+			$t = array($_GET['id']);
 			$selecPrepare = self::$bdd->prepare('SELECT nom, texte FROM articles WHERE idArticle=?');
 			$selecPrepare->execute($t);
 			$tab = $selecPrepare->fetchall();
