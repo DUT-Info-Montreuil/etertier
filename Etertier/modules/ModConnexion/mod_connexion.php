@@ -33,6 +33,7 @@ class ModConnexion{
 		else{
 			$cont->erreur();
 		}
+		$this->affichage = $cont->vue->getAffichage();
 	}
 }
 	
