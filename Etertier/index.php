@@ -17,6 +17,10 @@
 				include_once('modules/ModConnexion/mod_connexion.php');
 				$module = new ModConnexion();
 				break;
+			case 'article':
+				include_once('modules/ModArticles/mod_article.php');
+				$module = new ModArticles();
+				break;
 		}
 	}
 

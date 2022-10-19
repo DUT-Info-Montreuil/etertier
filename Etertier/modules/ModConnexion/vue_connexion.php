@@ -24,7 +24,7 @@ class VueConnexion extends VueGenerique{
 		?>
 		<h1>Inscription:</h1>
 		<form action="index.php?module=connexion&action=inscrire" method="post">
-			<p>Pseudo: <input type="text" name="login" /></p>
+			<p>Pseudo :  <input type="text" name="login" /></p>
 			<p>Mot de passe: <input type="password" name="password" /></p>
 			<p>Confirmer mot de passe: <input type="password" name="passwordConfirm" /></p>
 			<p><input type="submit" value="S'inscrire"></p>
