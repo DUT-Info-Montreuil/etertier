@@ -21,6 +21,10 @@
 				include_once('modules/ModArticles/mod_article.php');
 				$module = new ModArticles();
 				break;
+			case 'jeux':
+				include_once('modules/ModJeux/mod_jeux.php');
+				$module = new ModJeux();
+				break;
 		}
 	}
 
