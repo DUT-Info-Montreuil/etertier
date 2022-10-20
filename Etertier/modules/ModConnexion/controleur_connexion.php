@@ -40,6 +40,7 @@ class ControleurConnexion{
 
 	public function deconnexion(){
 		unset($_SESSION['login']);
+		unset($_SESSION['redacteur']);
 		$this->vue->deconnexion();
 	}
 

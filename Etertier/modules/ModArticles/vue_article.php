@@ -12,7 +12,7 @@ class VueArticle extends VueGenerique{
 			echo '<p><a href="index.php?module=article&action=details&id=' . $val['idArticle'] . '">' . $val['nom'] . '</a></p>';
 		}
 
-		if(isset($_SESSION['login'])){
+		if(isset($_SESSION['login']) && isset($_SESSION['redacteur']) && $_SESSION['redacteur']==1){
 			echo '<p><a href="index.php?module=article&action=redaction"> Rédiger un article. </a></p>';
 		}
 	}

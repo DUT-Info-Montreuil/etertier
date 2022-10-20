@@ -10,12 +10,13 @@ class ModeleConnexion extends Connexion{
 	public function connecter(){
 			
 		$t = array($_POST["login"]);
-		$selecPrepare = self::$bdd->prepare('SELECT login,password FROM membres WHERE login=?');
+		$selecPrepare = self::$bdd->prepare('SELECT login,password, redacteur FROM membres WHERE login=?');
 		$selecPrepare->execute($t);
 		$tab = $selecPrepare->fetchall();
 
 		if(isset($tab[0]) && password_verify($_POST["password"], $tab[0]['password'])){
 			$_SESSION['login'] = $tab[0]['login'];
+			$_SESSION['redacteur'] = $tab[0]['redacteur'];
 		}
 
 
@@ -48,6 +49,7 @@ class ModeleConnexion extends Connexion{
 			$selecPrepare->execute($t);
 
 			$_SESSION['login'] = $_POST['login'];
+			$_SESSION['redacteur'] = 0;
 		}
 
 		unset($_POST["login"]);

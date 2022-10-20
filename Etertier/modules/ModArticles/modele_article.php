@@ -30,15 +30,15 @@ class ModeleArticle extends Connexion{
 
 	public function redige() {
 		$l = array($_SESSION["login"]);
-		$selecPrepare1 = self::$bdd->prepare('SELECT id FROM membres where login = ?');
+		$selecPrepare1 = self::$bdd->prepare('SELECT id, redacteur FROM membres where login = ?');
 		$selecPrepare1->execute($l);
-		$id = $selecPrepare1->fetchall();
-		if(isset($_POST["titreArticle"]) && isset($_POST["texteArticle"]) && strlen($_POST["titreArticle"])>0 && strlen($_POST["texteArticle"])>0){
-			$t = array($id[0]['id'], $_POST["titreArticle"], $_POST["texteArticle"]);
+		$membre = $selecPrepare1->fetchall();
+		if(isset($_POST["titreArticle"]) && isset($_POST["texteArticle"]) && strlen($_POST["titreArticle"])>0 && strlen($_POST["texteArticle"])>0 && isset($membre[0]['redacteur']) && $membre[0]['redacteur']==1){
+			$t = array($membre[0]['id'], $_POST["titreArticle"], $_POST["texteArticle"]);
 			$selecPrepare2 = self::$bdd->prepare('INSERT INTO articles(idAuteur, nom, texte, date) VALUES (?,?,?, NOW())');
 			$selecPrepare2->execute($t);
 
-			$t2 = array($id[0]['id'], $_POST["titreArticle"]);
+			$t2 = array($membre[0]['id'], $_POST["titreArticle"]);
             $selecPrepare3 = self::$bdd->prepare('SELECT idArticle FROM articles WHERE idAuteur=? AND nom=? ORDER BY articles.date DESC');
             $selecPrepare3->execute($t2);
             $article = $selecPrepare3->fetchall();

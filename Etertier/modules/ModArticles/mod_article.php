@@ -11,9 +11,9 @@ class ModArticle{
 		switch($cont->get_action()){
 			case "details": $cont->details();
 				break;
-			case "redaction": $cont->redaction();
+			case "redaction": if(isset($_SESSION['login']) && isset($_SESSION['redacteur']) && $_SESSION['redacteur']==1){$cont->redaction();}else{$cont->erreur();}
 				break;
-			case "redige": $cont->redige();
+			case "redige": if(isset($_SESSION['login']) && isset($_SESSION['redacteur']) && $_SESSION['redacteur']==1){$cont->redige();}else{$cont->erreur();}
 				break;
 			default: $cont->liste();
 
