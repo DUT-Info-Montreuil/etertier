@@ -34,7 +34,13 @@ class ControleurArticle{
 		return $this->action;
 	}
 
+	public function redaction() {
+		$this->vue->form_redac();
+	}
 
+	public function redige() {
+		$this->modele->redige();
+	}
 
 }
 

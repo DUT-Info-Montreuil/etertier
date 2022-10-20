@@ -11,7 +11,7 @@
 					"<nav class=\"navbar navbar-expand navbar-dark bg-dark\">
 						<div class=\"navbar-collapse collapse justify-content-between\">
 							<ul class=\"navbar-nav\">
-								<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php\">Acceuil</a></li>
+								<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php\">Accueil</a></li>
 								<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php?module=article\">Articles</a></li>
 								<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php?module=listes\">Listes</a></li>
 								<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php?module=jeux\">Jeux</a></li>
@@ -37,7 +37,10 @@
 							<li class=\"nav-item\"><a class=\"nav-link\" href=index.php?module=connexion&action=inscription>Inscription</a></li>
 						</ul></div></nav>";
 				} else{
-					$this->contenu .= "<i class=\"fa-solid fa-user\"></i>" . $_SESSION['login']." - <a href=index.php?module=connexion&action=deconnexion>Déconnexion</a></nav>";
+					$this->contenu .= "<ul class=\"navbar-nav\">
+							<li class=\"nav-item\"><a class=\"nav-link\" href=index.php>".$_SESSION['login']."</a></li>
+							<li class=\"nav-item\"><a class=\"nav-link\" href=index.php?module=connexion&action=deconnexion>Déconnexion</a></li>
+						</ul></div></nav>";
 				}
 		}
 

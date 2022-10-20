@@ -11,7 +11,12 @@ class ModArticle{
 		switch($cont->get_action()){
 			case "details": $cont->details();
 				break;
+			case "redaction": $cont->redaction();
+				break;
+			case "redige": $cont->redige();
+				break;
 			default: $cont->liste();
+
 		}
 
 
