@@ -12,6 +12,8 @@
 						<div class=\"navbar-collapse collapse justify-content-between\">
 							<ul class=\"navbar-nav\">
 								<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php\">Acceuil</a></li>
+								<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php?module=article\">Articles</a></li>
+								<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php?module=listes\">Listes</a></li>
 								<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php?module=jeux\">Jeux</a></li>
 								<li class=\"nav-item dropdown\">
 									<button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownmenu\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
@@ -26,7 +28,6 @@
 								$this->contenu.="</div>
 								<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php\">Liste Rédacteurs</a></li>
 								<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php\">Liste Membres</a></li>
-								<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php?module=article\">Articles</a></li>
 								<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php\">FAQ</a></li>
 							</ul>";
 				if(!isset($_SESSION['login'])){

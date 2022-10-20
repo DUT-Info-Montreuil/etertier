@@ -11,7 +11,7 @@ class VueJeux extends VueGenerique{
 
 
 	public function afficherListe($tab){
-		echo '<h3>Liste des jeux:</h3>';
+		echo '<h2>Liste des jeux:</h2>';
 		foreach($tab as $cle=>$val){
 			echo '<p> - <a href="index.php?module=jeux&action=details&id=' . $val['idJeu'] . '">' . $val['nomJeu'] . '</a></p>';
 		}
@@ -19,7 +19,7 @@ class VueJeux extends VueGenerique{
 
 	public function afficherListeParGenre($genre, $tab){
 		if(isset($genre)){
-			echo '<h3>Liste des jeux de '. $genre .':</h3>';
+			echo '<h2>Liste des jeux de '. $genre .':</h2>';
 			foreach($tab as $cle=>$val){
 				echo '<p> - <a href="index.php?module=jeux&action=details&id=' . $val['idJeu'] . '">' . $val['nomJeu'] . '</a></p>';
 			}
@@ -50,8 +50,12 @@ class VueJeux extends VueGenerique{
 		else{
 			$this->afficher_erreur();
 		}
-
-		echo '<p><a href=\'index.php?module=jeux\'><i class="fa-solid fa-arrow-left"></i> Retour à la liste des jeux.</a></p>';
+		if($_GET['module']=="jeuxListe"){
+			echo '<p><a href=\'index.php?module=listes&action=details&id=' . $_GET['liste'] . '\'><i class="fa-solid fa-arrow-left"></i> Retour à la liste.</a></p>';
+		}
+		else{
+			echo '<p><a href=\'index.php?module=jeux\'><i class="fa-solid fa-arrow-left"></i> Retour à la liste des jeux.</a></p>';
+		}
 	}
 
 	public function afficher_erreur(){

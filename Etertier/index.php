@@ -21,9 +21,14 @@
 				include_once('modules/ModArticles/mod_article.php');
 				$module = new ModArticle();
 				break;
+			case 'jeuxListe';
 			case 'jeux':
 				include_once('modules/ModJeux/mod_jeux.php');
 				$module = new ModJeux();
+				break;
+			case 'listes':
+				include_once('modules/ModListes/mod_listes.php');
+				$module = new ModListes();
 				break;
 		}
 	}
