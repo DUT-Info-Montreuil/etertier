@@ -7,7 +7,7 @@ class ModeleArticle extends Connexion{
 	}
 
 	public function get_liste(){
-		$selecPrepare = self::$bdd->prepare('SELECT idArticle, nom FROM articles');
+		$selecPrepare = self::$bdd->prepare('SELECT articles.idArticle, articles.nom, articles.idAuteur, articles.date, membres.login FROM articles INNER JOIN membres ON membres.id = articles.idAuteur');
 		$selecPrepare->execute();
 		$tab = $selecPrepare->fetchall();
 		return $tab;

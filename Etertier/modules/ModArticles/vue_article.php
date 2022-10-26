@@ -7,19 +7,23 @@ class VueArticle extends VueGenerique{
 	}
 
 	public function afficher_liste($tab){
-		echo '<h2>Les Articles :</h2>';
+		echo '<h2 class="text-center text-uppercase m-4">Les Articles :</h2>';
 		foreach($tab as $cle=>$val){
-			echo '<p><a href="index.php?module=article&action=details&id=' . $val['idArticle'] . '">' . $val['nom'] . '</a></p>';
+			echo '<div class="d"><p class="text-center"><a class="nav-link" href="index.php?module=article&action=details&id=' . $val['idArticle'] . '">' . $val['nom'] . '</a></p>
+			<p class="text-center">'."écrit par ".$val['login']." le ".$val['date'].'</p>
+			</div>';
 		}
 
 		if(isset($_SESSION['login']) && isset($_SESSION['redacteur']) && $_SESSION['redacteur']==1){
-			echo '<p><a href="index.php?module=article&action=redaction"> Rédiger un article. </a></p>';
+			echo '<div class="d">
+				<p class="text-center"><a class="nav-link" href="index.php?module=listes&action=details&id=' . $val['idListe'] . '">' . $val['titre'] . '</a> par ' . $val['login'] . ' le ' . $val['dateCreation'] . '.</p>
+			</div>';
 		}
 	}
 
 	public function afficher_details($tab){
 		if(isset($tab)){
-			echo '<h2>' . $tab['nom'] . '</h2><p>' . $tab['texte'] . '</p>';
+			echo '<h2 class="text-center text-uppercase m-4">' . $tab['nom'] . '</h2><p>' . $tab['texte'] . '</p>';
 		}
 		else{
 			$this->afficher_erreur();
