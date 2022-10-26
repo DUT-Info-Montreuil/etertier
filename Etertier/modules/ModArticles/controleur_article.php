@@ -42,7 +42,7 @@ class ControleurArticle{
 		$this->modele->redige();
 		//Si la création d'article a réussi, on est redirigé vers une autre page
 		//donc l'appelle au message d'erreur ne s'effectue que si la création d'article n'a pas marché
-		$this->erreur();
+		$this->erreur(); 
 	}
 
 }

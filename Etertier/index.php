@@ -13,6 +13,10 @@
 
 	if(isset($_GET['module'])){
 		switch($_GET['module']){	
+			case 'accueil':
+				include_once('modules/ModAccueil/mod_accueil.php');
+				$module = new ModAccueil();
+				break;
 			case 'connexion':
 				include_once('modules/ModConnexion/mod_connexion.php');
 				$module = new ModConnexion();

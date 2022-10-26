@@ -9,7 +9,7 @@ include_once('vue_generique.php');
 
         public function __construct() {
             $this->vue = new VueGenerique();
-            $this->module = isset($_GET['action']) ? $_GET['action'] : "joueurs";
+            $this->module = isset($_GET['module']) ? $_GET['module'] : "accueil";
         }
 
         // public function menu() {
