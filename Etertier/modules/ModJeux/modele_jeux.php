@@ -9,7 +9,7 @@ class ModeleJeux extends Connexion{
 
 
 public function getListe(){
-	$selecPrepare = self::$bdd->prepare('SELECT idJeu, nomJeu FROM jeux');
+	$selecPrepare = self::$bdd->prepare('SELECT idJeu, nomJeu, image FROM jeux');
 	$selecPrepare->execute();
 	$tab = $selecPrepare->fetchall();
 	return $tab;
@@ -19,7 +19,7 @@ public function getListe(){
 public function getListeParGenre(){
 	if(isset($_GET['genre'])){
 		$t = array($_GET['genre']);
-		$selecPrepare = self::$bdd->prepare('SELECT jeux.idJeu, jeux.nomJeu FROM jeux INNER JOIN genres_de_jeux ON genres_de_jeux.idJeu = jeux.idJeu WHERE idGenre=?');
+		$selecPrepare = self::$bdd->prepare('SELECT jeux.idJeu, jeux.nomJeu, jeux.image FROM jeux INNER JOIN genres_de_jeux ON genres_de_jeux.idJeu = jeux.idJeu WHERE idGenre=?');
 		$selecPrepare->execute($t);
 		$tab = $selecPrepare->fetchall();
 		
