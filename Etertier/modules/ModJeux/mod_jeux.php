@@ -16,6 +16,8 @@ class ModJeux{
 					break;
 				case 'genre':	$cont->afficherListeParGenre();
 					break;
+				case 'noter':	$cont->noter();
+					break;
 				default: $cont->afficherListe();
 			}
 		}

@@ -24,7 +24,11 @@ class ControleurJeux{
 
 
 	public function afficherDetails(){
-		$this->vue->afficherDetails($this->modele->getDetails(), $this->modele->getGenreDeJeu());
+		$this->vue->afficherDetails($this->modele->getDetails(), $this->modele->getGenreDeJeu(), $this->modele->getNote(), $this->modele->getMoyenne(), $this->modele->getNotesRedac());
+	}
+
+	public function noter(){
+		$this->modele->noter();
 	}
 
 }
