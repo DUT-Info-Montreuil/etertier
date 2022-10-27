@@ -17,7 +17,7 @@ class ModeleAccueil extends Connexion{
 
     public function get_liste_tierlists_recents(){
 		$selecPrepare = self::$bdd->prepare('SELECT idListe, titre FROM listes ORDER BY dateCreation DESC LIMIT 5');
-		$selecPrepare = self::$bdd->prepare('SELECT listes.idListe, listes.titre, listes.dateCreation, membres.login FROM listes INNER JOIN membres ON membres.id = listes.auteur ORDER BY listes.dateCreation DESC LIMIT 5');
+		$selecPrepare = self::$bdd->prepare('SELECT listes.idListe, listes.titre, listes.dateCreation, membres.login, membres.id FROM listes INNER JOIN membres ON membres.id = listes.auteur ORDER BY listes.dateCreation DESC LIMIT 5');
 		$selecPrepare->execute();
 		$tab = $selecPrepare->fetchall();
 		return $tab;

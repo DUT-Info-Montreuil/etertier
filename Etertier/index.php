@@ -13,10 +13,6 @@
 
 	if(isset($_GET['module'])){
 		switch($_GET['module']){	
-			case 'accueil':
-				include_once('modules/ModAccueil/mod_accueil.php');
-				$module = new ModAccueil();
-				break;
 			case 'connexion':
 				include_once('modules/ModConnexion/mod_connexion.php');
 				$module = new ModConnexion();
@@ -34,7 +30,18 @@
 				include_once('modules/ModListes/mod_listes.php');
 				$module = new ModListes();
 				break;
+			case 'pageuser':
+				include_once('modules/ModUtilisateur/mod_utilisateur.php');
+				$module = new ModUtilisateur();
+				break;
+			default:
+				include_once('modules/ModAccueil/mod_accueil.php');
+				$module = new ModAccueil();
 		}
+	}
+	else{
+		include_once('modules/ModAccueil/mod_accueil.php');
+		$module = new ModAccueil();
 	}
 
 

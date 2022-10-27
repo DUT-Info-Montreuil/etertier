@@ -4,7 +4,7 @@ require_once"vue_generique.php";
 class VueAccueil extends VueGenerique{
 
     public function __construct() {
-        
+        parent::__construct();
     }
 
     public function afficher_liste_articles_recents($tab){
@@ -14,7 +14,7 @@ class VueAccueil extends VueGenerique{
 				<p class="text-center">
 					<a class="nav-link" href="index.php?module=article&action=details&id=' . $val['idArticle'] . '">' . $val['nom'] . '</a>
 				</p>
-				<p class="text-center">'."écrit par ".$val['login']." le ".$val['date'].'</p>
+				<p class="text-center">'."écrit par <a href=index.php?module=pageuser&id=".$val['idAuteur'].">".$val['login']."</a> le ".$val['date'].'</p>
 			</div>';
 		}
 	}

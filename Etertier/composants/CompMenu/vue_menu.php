@@ -11,7 +11,7 @@
 					"<nav class=\"navbar navbar-expand navbar-dark bg-dark\">
 						<div class=\"navbar-collapse collapse justify-content-between\">
 							<ul class=\"navbar-nav\">
-								<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php?module=accueil\">Accueil</a></li>
+								<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php\">Accueil</a></li>
 								<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php?module=article\">Articles</a></li>
 								<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php?module=listes\">Listes</a></li>
 								<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php?module=jeux\">Jeux</a></li>
