@@ -1,9 +1,6 @@
 <?php
-
-class ControleurListes{
-
-	public $vue;
-	private $modele;
+require_once "modules/ModPageAvecCommentaires/controleur_pageAvecCommentaires.php";
+class ControleurListes extends ControleurPageAvecCommentaires{
 
 	private $action;
 	
@@ -24,6 +21,7 @@ class ControleurListes{
 
 	public function details(){
 		$this->vue->afficher_details($this->modele->get_details(), $this->modele->get_classement());
+		$this->commentaires("commentaire_liste");
 	}
 
 	public function erreur(){

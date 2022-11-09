@@ -1,9 +1,7 @@
 <?php
+require_once "modules/ModPageAvecCommentaires/controleur_pageAvecCommentaires.php";
 
-class ControleurArticle{
-
-	public $vue;
-	private $modele;
+class ControleurArticle extends ControleurPageAvecCommentaires{
 
 	private $action;
 	
@@ -24,6 +22,7 @@ class ControleurArticle{
 
 	public function details(){
 		$this->vue->afficher_details($this->modele->get_details());
+		$this->commentaires("commentaire_article");
 	}
 
 	public function erreur(){
