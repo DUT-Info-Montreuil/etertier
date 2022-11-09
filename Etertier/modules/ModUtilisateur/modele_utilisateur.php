@@ -64,6 +64,58 @@ class ModeleUtilisateur extends Connexion{
         return NULL;
         
     }
+
+    public function changer_photo_profil(){
+        $t = array($_SESSION["login"]);
+        $selecPrepare2 = self::$bdd->prepare('SELECT id FROM membres WHERE login=?');
+        $selecPrepare2->execute($t);
+        $tab = $selecPrepare2->fetchall();
+
+        $t2 = $tab[0]["id"];
+
+        if ($_FILES['photo']['error']) {
+                switch ($_FILES['photo']['error']){
+                case 1: // UPLOAD_ERR_INI_SIZE
+                  return "Le fichier dépasse la limite autorisée par le serveur (fichier php.ini) !";
+                  break;
+                case 2: // UPLOAD_ERR_FORM_SIZE
+                  return "Le fichier dépasse la limite autorisée dans le formulaire HTML !";
+                  break;
+                case 3: // UPLOAD_ERR_PARTIAL
+                  return "L'envoi du fichier a été interrompu pendant le transfert !";
+                  break;
+                case 4: // UPLOAD_ERR_NO_FILE
+                  return "Aucune image sélectionnée.";
+                  break;
+            }
+        }
+        else{
+            $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
+            $filename = $_FILES["photo"]["name"];
+            $filetype = $_FILES["photo"]["type"];
+
+
+            // Vérifie l'extension du fichier
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+            if(!array_key_exists($ext, $allowed)){
+                return "Erreur : Veuillez sélectionner un format de fichier valide ou veuillez renommer votre fichier avec l'extension a la fin.";
+            }
+            else{
+                move_uploaded_file($_FILES["photo"]["tmp_name"], "ressources/photoProfile/" . $_FILES["photo"]["name"]);
+
+                rename("ressources/photoProfile/" . $_FILES["photo"]["name"], "ressources/photoProfile/" . $t2);
+
+                $t3 = $t2;
+
+                $selecPrepare = self::$bdd->prepare('UPDATE membres SET membres.photoprofil=? WHERE id=?');
+                $selecPrepare->execute(array($t3, $t2));    
+
+                header('Location: index.php?module=pageuser');
+                exit();
+            }
+        }
+        
+    }
 }
 
 ?>

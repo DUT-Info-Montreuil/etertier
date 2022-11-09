@@ -19,8 +19,9 @@ class ControleurUtilisateur {
 
         if (!isset($details)) {
             $details = $this->modele->getSelfDetails();
+            $this->vue->form_upload_pfp();
         }
-        
+
         if (!isset($details)) {
             $this->vue->afficher_erreur();
         }
@@ -31,6 +32,11 @@ class ControleurUtilisateur {
             }
             $this->vue->afficher_liste_tierlists_recents($details['login'], $this->modele->get_Listes($details['id']));
         }
+    }
+
+    public function uploader() {
+        $message = $this->modele->changer_photo_profil();
+        $this->vue->affiche_erreur_photo($message);
     }
 
 

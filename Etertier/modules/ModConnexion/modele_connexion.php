@@ -45,7 +45,7 @@ class ModeleConnexion extends Connexion{
 		if(isset($_POST["login"]) && isset($_POST["password"]) && $_POST["password"] == $_POST["passwordConfirm"] && strlen($_POST['password']) != 0 && strlen($_POST['login']) != 0){
 
 			$t = array($_POST["login"], password_hash($_POST["password"], PASSWORD_DEFAULT));
-			$selecPrepare = self::$bdd->prepare('INSERT INTO membres(login, password) VALUES (?,?)');
+			$selecPrepare = self::$bdd->prepare('INSERT INTO membres(login, password, photoprofil) VALUES (?,?,\'0.png\')');
 			$selecPrepare->execute($t);
 
 			$_SESSION['login'] = $_POST['login'];

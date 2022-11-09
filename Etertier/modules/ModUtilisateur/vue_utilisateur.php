@@ -10,7 +10,9 @@ class VueUtilisateur extends VueGenerique{
     }
 
     public function affiche_Details_User($tab) {
-        echo '<h2>' . $tab['login'] . '</h2><br>';
+		echo '<img src="ressources/photoProfile/' . $tab['photoprofil'];
+
+        echo '"/><h2>' . $tab['login'] . '</h2><br>';
 
         echo $tab['bio'];
     }
@@ -36,8 +38,28 @@ class VueUtilisateur extends VueGenerique{
 		}
 	}
 
+	public function form_upload_pfp() {
+		?>
+			<div id="upload">
+			<form action="index.php?module=pageuser&action=upload" method="post" enctype="multipart/form-data">
+				<h2>Changer de photo de profil</h2>
+				<p>taille fichier plus petit que 2 MO</p>
+				<input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+				<input type="file" name="photo" id="fileUpload">
+				<input type="submit" name="submit" value="Upload" class="boutonUpload">
+			</form>
+
+			
+			</div>
+		<?php
+	}
+
     public function afficher_erreur(){
 		echo '<p>Erreur, cette page n\'existe pas.</p>';
+	}
+
+	public function affiche_erreur_photo($message){
+		echo $message;
 	}
 }
 
