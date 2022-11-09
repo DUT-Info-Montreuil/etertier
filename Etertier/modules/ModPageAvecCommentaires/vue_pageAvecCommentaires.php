@@ -11,8 +11,8 @@ class VuePageAvecCommentaires extends VueGenerique{
 		echo '<h2 class="text-center text-uppercase m-4">Commentaires :</h2>';
 		if(isset($tab[0])){
 			foreach($tab as $cle=>$val){
-				echo '<div class="d">
-					<p class="text-center">' . $val['texte'] . ' par <a class="nav-link" href="index.php?module=pageuser&id=' . $val['idAuteur'] . '">' . $val['login'] . '</a> le ' . $val['date'] . '.</p>
+				echo '<div class="com">
+					<p>' . $val['texte'] . '<br> par <a href="index.php?module=pageuser&id=' . $val['idAuteur'] . '">' . $val['login'] . '</a> le ' . $val['date'] . '.</p>
 				</div>';
 			}
 		}
