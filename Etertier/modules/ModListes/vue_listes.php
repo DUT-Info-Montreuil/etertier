@@ -1,7 +1,7 @@
 <?php
 
-require_once"vue_generique.php";
-class VueListes extends VueGenerique{
+require_once "modules/ModPageAvecCommentaires/vue_pageAvecCommentaires.php";
+class VueListes extends VuePageAvecCommentaires{
 	public function __construct () {
 		parent::__construct();
 	}

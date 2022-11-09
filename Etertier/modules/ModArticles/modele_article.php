@@ -1,7 +1,7 @@
 <?php
 
-require_once "connexion.php";
-class ModeleArticle extends Connexion{
+require_once "modules/ModPageAvecCommentaires/modele_pageAvecCommentaires.php";
+class ModeleArticle extends ModelePageAvecCommentaires{
 	public function __construct(){
 
 	}
