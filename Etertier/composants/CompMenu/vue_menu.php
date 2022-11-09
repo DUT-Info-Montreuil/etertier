@@ -38,7 +38,7 @@
 						</ul></div></nav>";
 				} else{
 					$this->contenu .= "<ul class=\"navbar-nav\">
-							<li class=\"nav-item\"><a class=\"nav-link\" href=index.php>".$_SESSION['login']."</a></li>
+							<li class=\"nav-item\"><a class=\"nav-link\" href=index.php?module=pageuser>".$_SESSION['login']."</a></li>
 							<li class=\"nav-item\"><a class=\"nav-link\" href=index.php?module=connexion&action=deconnexion>Déconnexion</a></li>
 						</ul></div></nav>";
 				}

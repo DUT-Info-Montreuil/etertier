@@ -23,7 +23,10 @@ class VueAccueil extends VueGenerique{
 		echo '<h2 class="text-uppercase m-4">Les Listes récentes :</h2>';
 		foreach($tab as $cle=>$val){
 			echo '<div class="d">
-				<p class="text-center"><a class="nav-link" href="index.php?module=listes&action=details&id=' . $val['idListe'] . '">' . $val['titre'] . '</a> par ' . $val['login'] . ' le ' . $val['dateCreation'] . '.</p>
+				<p class="text-center">
+					<a class="nav-link" href="index.php?module=listes&action=details&id=' . $val['idListe'] . '">' . $val['titre'] . '.</a>
+				</p>
+				<p class="text-center">'."écrit par <a href=index.php?module=pageuser&id=".$val['id'].">".$val['login']."</a> le ".$val['dateCreation'].'</p>
 			</div>';
 		}
 	}

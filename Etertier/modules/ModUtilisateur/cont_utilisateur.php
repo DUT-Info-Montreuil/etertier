@@ -18,18 +18,18 @@ class ControleurUtilisateur {
         $details = $this->modele->getDetails();
 
         if (!isset($details)) {
-            $details = getSelfDetails();
+            $details = $this->modele->getSelfDetails();
         }
-
+        
         if (!isset($details)) {
             $this->vue->afficher_erreur();
         }
         else{
             $this->vue->affiche_Details_User($details);
             if($details['redacteur']==1){
-                $this->vue->afficher_liste_articles_recents($details['login'], $this->modele->get_Articles());
+                $this->vue->afficher_liste_articles_recents($details['login'], $this->modele->get_Articles($details['id']));
             }
-            $this->vue->afficher_liste_tierlists_recents($details['login'], $this->modele->get_Listes());
+            $this->vue->afficher_liste_tierlists_recents($details['login'], $this->modele->get_Listes($details['id']));
         }
     }
 

@@ -37,31 +37,29 @@ class ModeleUtilisateur extends Connexion{
         
     }
 
-    public function get_Listes(){
-        if(isset($_GET['id'])){
-            $t = array($_GET['id']);
-            $selecPrepare = self::$bdd->prepare('SELECT * FROM listes WHERE auteur=?');
-            $selecPrepare->execute($t);
-            $tab = $selecPrepare->fetchall();
-            if(isset($tab)){
-                return $tab;
-            }
+    public function get_Listes($id){
+        $t = array($id);
+        $selecPrepare = self::$bdd->prepare('SELECT * FROM listes WHERE auteur=?');
+        $selecPrepare->execute($t);
+        $tab = $selecPrepare->fetchall();
+        if(isset($tab)){
+            return $tab;
         }
+        
         
         return NULL;
         
     }
 
-    public function get_Articles(){
-        if(isset($_GET['id'])){
-            $t = array($_GET['id']);
-            $selecPrepare = self::$bdd->prepare('SELECT * FROM articles WHERE idAuteur=?');
-            $selecPrepare->execute($t);
-            $tab = $selecPrepare->fetchall();
-            if(isset($tab)){
-                return $tab;
-            }
+    public function get_Articles($id){
+        $t = array($id);
+        $selecPrepare = self::$bdd->prepare('SELECT * FROM articles WHERE idAuteur=?');
+        $selecPrepare->execute($t);
+        $tab = $selecPrepare->fetchall();
+        if(isset($tab)){
+            return $tab;
         }
+        
         
         return NULL;
         
