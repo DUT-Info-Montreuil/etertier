@@ -7,7 +7,7 @@ class ModeleListes extends ModelePageAvecCommentaires{
 	}
 
 	public function get_liste(){
-		$selecPrepare = self::$bdd->prepare('SELECT listes.idListe, listes.titre, listes.dateCreation, membres.login FROM listes INNER JOIN membres ON membres.id = listes.auteur');
+		$selecPrepare = self::$bdd->prepare('SELECT listes.idListe, listes.titre, listes.dateCreation, membres.login, membres.id FROM listes INNER JOIN membres ON membres.id = listes.auteur');
 		$selecPrepare->execute();
 		$tab = $selecPrepare->fetchall();
 		return $tab;
