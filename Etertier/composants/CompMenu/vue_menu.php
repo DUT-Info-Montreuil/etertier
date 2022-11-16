@@ -25,10 +25,15 @@
 										$this->contenu .= "<a class=\"dropdown-item\" href=\"index.php?module=jeux&action=genre&genre=". $val['idGenre'] ."\">". $val['nomGenre'] ."</a>";
 									}
 
-								$this->contenu.="</div>
-								<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php\">Liste Rédacteurs</a></li>
-								<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php\">Liste Membres</a></li>
-								<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php\">FAQ</a></li>
+								$this->contenu.="</div>";
+								if(isset($_SESSION['login'])){
+								$this->contenu.="<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php?module=creationListe\">Créer une liste</a></li>";
+								if(isset($_SESSION['redacteur']) && $_SESSION['redacteur']==1){
+									$this->contenu.="<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php?module=article&action=redaction\">Rédiger un article</a></li>";
+									$this->contenu.="<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php?module=creerjeu\">Ajouter un jeu</a></li>";
+								}
+								}
+								$this->contenu.="<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php\">FAQ</a></li>
 							</ul>";
 				if(!isset($_SESSION['login'])){
 				  $this->contenu .= 
