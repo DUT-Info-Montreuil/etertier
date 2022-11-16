@@ -21,4 +21,17 @@ class VuePageAvecCommentaires extends VueGenerique{
 		}
 
 	}
+	public function afficher_formulaire(){
+		echo '<form action="index.php?module='.$_GET['module'].'&action=envoieComm&id='. $_GET['id'].'" method="post">
+			<p>Commentaire : <br/> <textarea name="texteCommentaire"></textarea></p>
+			<p><input type="submit" value="Envoyer"></p>
+		</form>';
+	}
+
+	public function erreur_envoie_commentaire($messageErreur){
+		echo $messageErreur;
+	}
+
+
+
 }

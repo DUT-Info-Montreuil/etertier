@@ -54,6 +54,16 @@ class VueUtilisateur extends VueGenerique{
 		<?php
 	}
 
+	public function form_change_bio() {
+		?>
+			<form action="index.php?module=pageuser&action=uploadbio" method="post">
+				<h2>Changer la bio</h2>
+				<input type="text" name="newbio" id="bioUpload">
+				<input type="submit" name="submitBio" value="Changer" class="boutonUploadBio">
+			</form>
+		<?php
+	}
+
     public function afficher_erreur(){
 		echo '<p>Erreur, cette page n\'existe pas.</p>';
 	}

@@ -11,6 +11,9 @@ class ModListes {
 		switch($cont->get_action()){
 			case "details": $cont->details();
 				break;
+			case "envoieComm": $cont->envoyer_commentaire("commentaire_liste"); 
+				$cont->details();
+				break;
 			default: $cont->liste();
 		}
 

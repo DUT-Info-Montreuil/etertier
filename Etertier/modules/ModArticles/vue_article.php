@@ -11,7 +11,7 @@ class VueArticle extends VuePageAvecCommentaires{
 		foreach($tab as $cle=>$val){
 			echo '<div class="d">
 				<p class="text-center">
-					<a class="nav-link" href="index.php?module=article&action=details&id=' . $val['idArticle'] . '">' . $val['nom'] . '</a>
+					<a href="index.php?module=article&action=details&id=' . $val['idArticle'] . '">' . $val['nom'] . '</a>
 				</p>
 				<p class="text-center">'."écrit par <a href=index.php?module=pageuser&id=".$val['idAuteur'].">".$val['login']."</a> le ".$val['date'].'</p>
 			</div>';

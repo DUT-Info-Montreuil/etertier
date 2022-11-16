@@ -2,14 +2,15 @@
 require_once "modules/ModPageAvecCommentaires/controleur_pageAvecCommentaires.php";
 
 class ControleurArticle extends ControleurPageAvecCommentaires{
-
+	
 	private $action;
 	
 	public function __construct(){
 		require_once "vue_article.php";
-		$this->vue = new VueArticle();
 		require_once "modele_article.php";
-		$this->modele = new ModeleArticle();
+		parent::__construct(new VueArticle(), new ModeleArticle());
+	
+
 
 		if(isset($_GET['action'])){
 			$this->action = $_GET['action'];
