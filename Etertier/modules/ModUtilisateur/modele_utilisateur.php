@@ -116,6 +116,14 @@ class ModeleUtilisateur extends Connexion{
         }
         
     }
+
+    public function change_bio() {
+        $t = array($_POST['newbio'], $_SESSION['login']);
+        $selecPrepare = self::$bdd->prepare('UPDATE membres SET bio = ? WHERE login=?');
+        $selecPrepare->execute($t);
+        $tab = $selecPrepare->fetchall();
+        
+    }
 }
 
 ?>

@@ -20,6 +20,7 @@ class ControleurUtilisateur {
         if (!isset($details)) {
             $details = $this->modele->getSelfDetails();
             $this->vue->form_upload_pfp();
+            $this->vue->form_change_bio();
         }
 
         if (!isset($details)) {
@@ -34,9 +35,13 @@ class ControleurUtilisateur {
         }
     }
 
-    public function uploader() {
+    public function uploaderPhotoProfil() {
         $message = $this->modele->changer_photo_profil();
         $this->vue->affiche_erreur_photo($message);
+    }
+
+    public function uploaderBio() {
+        $this->modele->change_bio();
     }
 
 
