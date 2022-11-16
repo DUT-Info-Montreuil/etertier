@@ -18,9 +18,7 @@ class VueArticle extends VuePageAvecCommentaires{
 		}
 
 		if(isset($_SESSION['login']) && isset($_SESSION['redacteur']) && $_SESSION['redacteur']==1){
-			echo '<div class="d">
-				<p class="text-center"><a class="nav-link" href="index.php?module=listes&action=details&id=' . $val['idListe'] . '">' . $val['titre'] . '</a> par ' . $val['login'] . ' le ' . $val['dateCreation'] . '.</p>
-			</div>';
+			echo '<p><a href="index.php?module=article&action=redaction"> Rédiger un article. </a></p>';
 		}
 	}
 
