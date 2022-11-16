@@ -25,6 +25,18 @@
     padding-right: 5px;
     font-size: 32px;
 }
+a{
+    color: darkslategray;
+}
+a:link{
+    text-decoration: none;
+}
+a:hover{
+    color: darkgray;
+}
+.link{ 
+    display: block;
+}
 
 
 .size{

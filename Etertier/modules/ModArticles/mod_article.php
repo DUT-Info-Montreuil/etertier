@@ -5,11 +5,16 @@ class ModArticle{
 	public $affichage;
 
 	public function __construct(){
+		
 		require_once "controleur_article.php";
 		$cont = new ControleurArticle();
 
 		switch($cont->get_action()){
+			
 			case "details": $cont->details();
+				break;
+			case "envoieComm": $cont->envoyer_commentaire("commentaire_article"); 
+				$cont->details();
 				break;
 			case "redaction": if(isset($_SESSION['login']) && isset($_SESSION['redacteur']) && $_SESSION['redacteur']==1){$cont->redaction();}else{$cont->erreur();}
 				break;

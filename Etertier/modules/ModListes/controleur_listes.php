@@ -6,9 +6,10 @@ class ControleurListes extends ControleurPageAvecCommentaires{
 	
 	public function __construct(){
 		require_once "vue_listes.php";
-		$this->vue = new VueListes();
 		require_once "modele_listes.php";
-		$this->modele = new ModeleListes();
+		parent::__construct( new VueListes(),new ModeleListes());
+		
+
 
 		if(isset($_GET['action'])){
 			$this->action = $_GET['action'];
