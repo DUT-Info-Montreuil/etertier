@@ -34,6 +34,10 @@
 				include_once('modules/ModUtilisateur/mod_utilisateur.php');
 				$module = new ModUtilisateur();
 				break;
+			case 'ajouterjeu':
+				include_once('modules/ModCreerJeux/mod_creer_jeux.php');
+				$module = new ModCreerJeux();
+				break;
 			default:
 				include_once('modules/ModAccueil/mod_accueil.php');
 				$module = new ModAccueil();
