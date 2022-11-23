@@ -10,7 +10,7 @@ class VueCreerJeux extends VueGenerique{
 
 	public function form_ajout_jeu() {
 		?>
-			<form action="index.php?module=creerjeu" method="post">
+			<form action="index.php?module=creerjeu&action=ajouterjeu" method="post">
 				<p>Nom du Jeu</p>
 				<input type="text" name="nomNewJeu" min=1 max=200>
 				<p>Date de sortie</p>
@@ -22,6 +22,7 @@ class VueCreerJeux extends VueGenerique{
 				<input type="hidden" name="MAX_FILE_SIZE" value="2000000">
 				<input type="file" name="photo" id="fileUpload">
 				<input type="submit" name="submit" value="Upload" class="boutonUpload"> -->
+				<input type="submit" name="creerJeu" value="ajouter">
 			</form>
 
 		<?php
