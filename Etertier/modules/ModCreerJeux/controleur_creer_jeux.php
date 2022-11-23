@@ -25,6 +25,7 @@ class ControleurCreerJeux{
 		if(isset($_POST['nomNewJeu'])&& isset( $_POST['dateNewJeu']) && isset($_POST['descriNewJeu'])) {
 			$this->modele->ajouterJeu();
 		}
+		$this->vue->form_ajout_jeu();
 	}
 
 	public function form_new_jeu() {
