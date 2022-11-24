@@ -23,13 +23,13 @@ class ControleurCreerJeux{
 
 	public function ajouter_jeu() {
 		if(isset($_POST['nomNewJeu'])&& isset( $_POST['dateNewJeu']) && isset($_POST['descriNewJeu'])) {
-			$this->modele->ajouterJeu();
+			$this->modele->ajouterJeu($this->modele->getGenres());
 		}
-		$this->vue->form_ajout_jeu();
+		$this->vue->form_ajout_jeu($this->modele->getGenres());
 	}
 
 	public function form_new_jeu() {
-		$this->vue->form_ajout_jeu();
+		$this->vue->form_ajout_jeu($this->modele->getGenres());
 	}
 
 }
