@@ -23,7 +23,7 @@ class ControleurArticle extends ControleurPageAvecCommentaires{
 
 	public function details(){
 		$this->vue->afficher_details($this->modele->get_details());
-		$this->commentaires("commentaire_article");
+		$this->commentaires("commentaire_article", "articles");
 	}
 
 	public function erreur(){

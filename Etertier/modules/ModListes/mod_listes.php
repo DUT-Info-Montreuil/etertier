@@ -14,6 +14,12 @@ class ModListes {
 			case "envoieComm": $cont->envoyer_commentaire("commentaire_liste"); 
 				$cont->details();
 				break;
+			case "liker":{$cont->liker("listes");}
+				break;
+			case "disliker":{$cont->disliker("listes");}
+				break;
+			case "enleverLikeDislike":{$cont->enlever("listes");}
+				break;
 			default: $cont->liste();
 		}
 

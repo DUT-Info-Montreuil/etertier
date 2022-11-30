@@ -20,6 +20,12 @@ class ModArticle{
 				break;
 			case "redige": if(isset($_SESSION['login']) && isset($_SESSION['redacteur']) && $_SESSION['redacteur']==1){$cont->redige();}else{$cont->erreur();}
 				break;
+			case "liker":{$cont->liker("articles");}
+				break;
+			case "disliker":{$cont->disliker("articles");}
+				break;
+			case "enleverLikeDislike":{$cont->enlever("articles");}
+				break;
 			default: $cont->liste();
 
 		}

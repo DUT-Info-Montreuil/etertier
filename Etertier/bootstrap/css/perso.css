@@ -1,3 +1,10 @@
+body{
+    background-image: url("etertier/Etertier/ressources/backgroundImage/918467.jpg");
+}
+
+.inline{
+    display: inline-block;
+}
 .com{
     background-color: lightgray;
     margin-left: auto;

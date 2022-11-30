@@ -24,7 +24,7 @@ class ControleurListes extends ControleurPageAvecCommentaires{
 		$details = $this->modele->get_details();
 		$this->vue->afficher_details($details, $this->modele->get_classement());
 		if(isset($details)){
-			$this->commentaires("commentaire_liste");
+			$this->commentaires("commentaire_liste", "listes");
 		}
 	}
 
