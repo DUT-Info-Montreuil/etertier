@@ -25,11 +25,20 @@ class ControleurCreationListe{
 	}
 				
 	public function ajoutJeu(){
+		$this->miseAJourNom();
+		
+
 		$genres = $this->modele->getGenres();
 		$this->vue->debutAjoutJeu($genres);
 
 		foreach($genres as $cle=>$val){
 			$this->vue->ajoutJeuParGenre($val['nomGenre'], $this->modele->getJeuxParGenre($val['idGenre']));
+		}
+	}
+
+	public function miseAJourNom(){
+		if($_POST['nomListe'] != $_POST['ancienNomListe'] && strlen($_POST['nomListe'])>0){
+			$this->modele->updateName();
 		}
 	}
 
@@ -39,60 +48,41 @@ class ControleurCreationListe{
 		exit();
 	}
 
-	public function action(){
-		
-		if($_POST['nomListe'] != $_POST['ancienNomListe'] && strlen($_POST['nomListe'])>0){
-			$this->miseAJourNom();
-		}
 
-		if(isset($_POST['ajoutJeu'])){
-			header('Location: index.php?module=creationListe&action=ajoutJeu');
-			exit();
-		}
-		else if(isset($_POST['supprimerJeu'])){
-			$this->supprimerJeu();
-		}
-		else if(isset($_POST['deplacerJeu'])){
-			$this->deplacerJeu();
-		}
-		else if(isset($_POST['poster'])){
-			$this->poster();
-		}		
-		else{
-			$this->vue->afficheErreur();
-		}
+	public function supprimerTout(){
+
+		$this->modele->toutSupprimer();
 
 		header('Location: index.php?module=creationListe');
 		exit();
-		/*
-		switch($_POST['action']){
-			case "ajoutJeu": $cont->ajoutJeu();
-				break;
-			case "ajouter": $this->ajouter();
-				break;
-			case "supprimerJeu": $this->supprimerJeu();
-				break;
-			case "deplacerJeu": $this->deplacerJeu();
-				break;
-			case "poster": $this->poster();
-				break;
-			default: $this->vue->afficheErreur();
-		}
-		*/
-
-	}
-
-	public function miseAJourNom(){
-		$this->modele->updateName();
 	}
 
 
-	public function supprimerTout(){}
+	public function supprimerJeu(){
+		$this->miseAJourNom();
 
+		$this->modele->supprimer();
 
-	public function supprimerJeu(){}
-	public function deplacerJeu(){}
-	public function poster(){}
+		header('Location: index.php?module=creationListe');
+		exit();
+	}
+
+	public function deplacerJeu(){
+		$this->miseAJourNom();
+
+		$this->modele->intervertir();
+
+		header('Location: index.php?module=creationListe');
+		exit();
+	}
+	public function poster(){
+		$this->miseAJourNom();
+
+		$this->modele->poster();
+
+		header('Location: index.php?module=listes&action=details&id=' . $_POST['idListe']);
+		exit();
+	}
 
 
 	public function get_action(){

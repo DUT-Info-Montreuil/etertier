@@ -67,8 +67,8 @@ class ModeleCreationListe extends Connexion{
 
 
 	public function getJeuxParGenre($idGenre){
-		$t = array($idGenre);
-		$selecPrepare = self::$bdd->prepare('SELECT jeux.idJeu, jeux.nomJeu, jeux.image FROM jeux INNER JOIN genres_de_jeux ON genres_de_jeux.idJeu = jeux.idJeu WHERE idGenre=? ORDER BY jeux.nomJeu');
+		$t = array($idGenre, $_POST['idListe']);
+		$selecPrepare = self::$bdd->prepare('SELECT jeux.idJeu, jeux.nomJeu, jeux.image FROM jeux INNER JOIN genres_de_jeux ON genres_de_jeux.idJeu = jeux.idJeu WHERE idGenre=? AND jeux.idJeu NOT IN (SELECT idJeu FROM jeuDansListe WHERE idListe=?) ORDER BY jeux.nomJeu');
 		$selecPrepare->execute($t);
 		$tab = $selecPrepare->fetchall();
 		
@@ -115,7 +115,55 @@ class ModeleCreationListe extends Connexion{
 	}
 
 
+	public function intervertir(){
+		//On récupère le classement du jeu qu'on veux bouger
+		$t = array($_GET['idJeu'], $_POST['idListe']);
+		$selecPrepare = self::$bdd->prepare('SELECT classement FROM jeuDansListe WHERE idJeu = ? AND idListe = ?');
+		$selecPrepare->execute($t);
+		$tab = $selecPrepare->fetchall();
 
+		//On change le classement du jeu au dessus
+		$t = array($tab[0]['classement'], $tab[0]['classement']-1, $_POST['idListe']);
+		$selecPrepare = self::$bdd->prepare('UPDATE jeuDansListe SET classement=? WHERE classement = ? AND idListe = ?');
+		$selecPrepare->execute($t);
+
+		//Et on change le classement du jeu
+		$t = array($tab[0]['classement']-1, $_GET['idJeu'], $_POST['idListe']);
+		$selecPrepare = self::$bdd->prepare('UPDATE jeuDansListe SET classement=? WHERE idJeu = ? AND idListe = ?');
+		$selecPrepare->execute($t);
+	}
+
+	public function supprimer(){
+		//On récupère le classement du jeu qu'on veux supprimer
+		$t = array($_GET['id'], $_POST['idListe']);
+		$selecPrepare = self::$bdd->prepare('SELECT classement FROM jeuDansListe WHERE idJeu = ? AND idListe = ?');
+		$selecPrepare->execute($t);
+		$tab = $selecPrepare->fetchall();
+
+		//On supprime le jeu
+		$selecPrepare = self::$bdd->prepare('DELETE FROM jeuDansListe WHERE idJeu = ? AND idListe = ?');
+		$selecPrepare->execute($t);
+
+		//On fait remonter dans le classement tout les jeux qui étaient après
+		$t = array($_POST['idListe'], $tab[0]['classement']);
+		$selecPrepare = self::$bdd->prepare('UPDATE jeuDansListe SET classement=classement-1 WHERE idListe=? AND classement>?');
+		$selecPrepare->execute($t);
+
+	}
+
+	public function toutSupprimer(){
+				$t = array($_POST['idListe']);
+				$selecPrepare = self::$bdd->prepare('DELETE FROM jeuDansListe WHERE idListe = ?');
+				$selecPrepare->execute($t);
+				$selecPrepare = self::$bdd->prepare('DELETE FROM listes WHERE idListe = ?');
+				$selecPrepare->execute($t);
+	}
+
+	public function poster(){
+		$t = array($_POST['idListe']);
+		$selecPrepare = self::$bdd->prepare('UPDATE listes SET public=1, dateCreation=NOW() WHERE idListe = ?');
+		$selecPrepare->execute($t);
+	}
 
 }
 

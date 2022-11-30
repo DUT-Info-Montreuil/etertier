@@ -14,7 +14,7 @@ class VueCreationListe extends VueGenerique{
 		if(isset($liste)){
 			?>
 			<div class="d-flex justify-content-center">
-			<form action="index.php?module=creationListe&action=action" method="post">
+			<form action="index.php?module=creationListe" method="post">
 				<h1>Création de liste :</h1>
 				<input type="hidden" name="idListe" value="<?php echo $liste["idListe"]; ?>"/>
 				<input type="hidden" name="ancienNomListe" value="<?php echo $liste["titre"]; ?>"/>
@@ -22,10 +22,9 @@ class VueCreationListe extends VueGenerique{
 				<br/>
 
 				<?php
-					$longueur = count($jeux);
 					foreach($jeux as $cle=>$val){
 						if($cle > 0){
-							echo '<input type="submit" name="deplacerJeu" value="Monter"/>';
+							echo '<input type="submit" name="deplacerJeu" value="Intervertir" formaction="index.php?module=creationListe&action=deplacerJeu&idJeu='.$val['idJeu'].'"/>';
 							echo "<br/>";
 						}
 						echo "<div>";
@@ -41,14 +40,15 @@ class VueCreationListe extends VueGenerique{
 								<p class="text-center">'.$val['nomJeu'].'</p>
 							</div>';
 						}				
-						echo '<input type="submit" name="supprimerJeu" value="Supprimer"></div><br/>';
-						if($cle < $longueur-1){
-							echo '<input type="submit" name="deplacerJeu" value="Descendre">';
-							echo "<br/>";
-						}
+						echo '<input type="submit" name="supprimerJeu" value="Supprimer" formaction="index.php?module=creationListe&action=supprimerJeu&id='.$val['idJeu'].'"></div><br/>';
+
 					}
 
-					echo '<input class="text-center" type="submit" name="ajoutJeu" value="Ajouter un jeu">';
+					echo '<input class="text-center" type="submit" name="ajoutJeu" value="Ajouter un jeu" formaction="index.php?module=creationListe&action=ajoutJeu"><br/>';
+					echo '<input class="text-center" type="submit" name="poster" value="Poster la liste" formaction="index.php?module=creationListe&action=poster"><br/>';
+					echo '<input class="text-center" type="submit" name="supprimerTout" value="Tout supprimer" formaction="index.php?module=creationListe&action=supprimerTout">';
+				
+
 				?>
 
 			</form>

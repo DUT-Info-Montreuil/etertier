@@ -15,6 +15,12 @@ class ModCreationListe{
 				break;
 			case "ajouter": $cont->ajouter();
 				break;
+			case "deplacerJeu": $cont->deplacerJeu();
+				break;
+			case "supprimerJeu": $cont->supprimerJeu();
+				break;
+			case "poster": $cont->poster();
+				break;
 			case "supprimerTout": $cont->supprimerTout();
 				break;
 			case "action": $cont->action();
