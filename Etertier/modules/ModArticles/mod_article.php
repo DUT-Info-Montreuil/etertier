@@ -26,6 +26,12 @@ class ModArticle{
 				break;
 			case "enleverLikeDislike":{$cont->enlever("articles");}
 				break;
+			case "likerCom":{$cont->liker_com("articles");}
+				break;
+			case "dislikerCom":{$cont->disliker_com("articles");}
+				break;
+			case "enleverLikeDislikeCom":{$cont->enlever_com("articles");}
+				break;
 			default: $cont->liste();
 
 		}
