@@ -7,7 +7,7 @@ class ModeleCreerJeux extends Connexion{
 	}
 
 
-	public function ajouterJeu() {
+	public function ajouterJeu($tab) {
 		$t=array($_POST['nomNewJeu'], $_POST['dateNewJeu'], $_POST['descriNewJeu']);
 		$selecPrepare = self::$bdd->prepare('INSERT INTO jeux(nomJeu, dateSortie, description, image) VALUES (?, ?, ?, "")');
         $selecPrepare->execute($t);
@@ -15,6 +15,14 @@ class ModeleCreerJeux extends Connexion{
 		$selecPrepare2 = self::$bdd->prepare('SELECT idJeu FROM jeux where nomJeu = ? AND dateSortie = ? AND description=?');
 		$selecPrepare2->execute($t);
 		$id = $selecPrepare2->fetchall();
+
+		foreach($tab as $key=>$val) {
+			if(isset($_POST[$val['nomGenre']])) {
+				$t=array($id[0]['idJeu'], $_POST[$val['nomGenre']]);
+				$selecPrepare = self::$bdd->prepare('INSERT INTO genres_de_jeux VALUES (?, ?)');
+				$selecPrepare->execute($t);
+			}
+		}
 		if($_FILES['photoNewJeu']['error'] != 4) {
 			if ($_FILES['photoNewJeu']['error']) {
 				switch ($_FILES['photoNewJeu']['error']){
@@ -53,10 +61,19 @@ class ModeleCreerJeux extends Connexion{
 
 				}
 			}
+			
 		}
 		header('Location: index.php?module=jeux&action=details&id='.$id[0]['idJeu']);
 		exit();
 	
+	}
+
+	public function getGenres() {
+		$selecPrepare = self::$bdd->prepare('SELECT * FROM genres');
+		$selecPrepare->execute();
+		$tab = $selecPrepare->fetchall();
+
+		return $tab;
 	}
 
 	
