@@ -12,7 +12,7 @@ class VuePageAvecCommentaires extends VueGenerique{
 		if(isset($tab[0])){
 			foreach($tab as $cle=>$val){
 				echo '<div class="com" id="com'.$val['idCommentaire'].'">
-					<p>' . $val['texte'] . '<br> par <a href="index.php?module=pageuser&id=' . $val['idAuteur'] . '">' . $val['login'] . '</a> le ' . $val['date'] . '.</p><br/>';
+					<p>' . htmlspecialchars($val['texte']) . '<br> par <a href="index.php?module=pageuser&id=' . $val['idAuteur'] . '">' . $val['login'] . '</a> le ' . $val['date'] . '.</p><br/>';
 				if(isset($_SESSION['login'])){
 					$this->afficher_like_commentaire($val['idCommentaire'], $val['isLiked'], $val['nbLike'], $val['nbDislike']);
 				}

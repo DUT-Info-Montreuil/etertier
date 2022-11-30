@@ -14,7 +14,7 @@ class VueUtilisateur extends VueGenerique{
 
         echo '"/><h1>' . $tab['login'] . '</h1><br>';
 
-        echo $tab['bio'] . "</div>";
+        echo htmlspecialchars($tab['bio']) . "</div>";
     }
 
     public function afficher_liste_articles_recents($pseudo, $tab){
