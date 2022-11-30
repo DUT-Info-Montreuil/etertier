@@ -31,6 +31,14 @@ class ControleurJeux{
 		$this->modele->noter();
 	}
 
+	public function changerImgJeu() {
+		$this->vue->form_upload_new_img_jeu();
+	}
+
+	public function uploadImg() {
+		$this->modele->uploadImgJeu();
+	}
+
 }
 
 
