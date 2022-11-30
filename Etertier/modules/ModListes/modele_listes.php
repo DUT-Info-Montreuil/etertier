@@ -16,7 +16,7 @@ class ModeleListes extends ModelePageAvecCommentaires{
 	public function get_details(){
 		if(isset($_GET['id'])){
 			$t = array($_GET['id']);
-			$selecPrepare = self::$bdd->prepare('SELECT listes.titre, listes.dateCreation, membres.login FROM listes INNER JOIN membres ON membres.id = listes.auteur WHERE idListe=? AND public = 1');
+			$selecPrepare = self::$bdd->prepare('SELECT listes.titre, listes.dateCreation, membres.login, membres.id FROM listes INNER JOIN membres ON membres.id = listes.auteur WHERE idListe=? AND public = 1');
 			$selecPrepare->execute($t);
 			$tab = $selecPrepare->fetchall();
 			if(isset($tab[0])){
@@ -31,7 +31,7 @@ class ModeleListes extends ModelePageAvecCommentaires{
 	public function get_classement(){
 		if(isset($_GET['id'])){
 			$t = array($_GET['id']);
-			$selecPrepare = self::$bdd->prepare('SELECT jeuDansListe.idJeu, jeuDansListe.classement, jeux.nomJeu, jeux.image FROM jeuDansListe INNER JOIN jeux ON jeuDansListe.idJeu = jeux.idJeu WHERE idListe=? ORDER BY classement ASC');
+			$selecPrepare = self::$bdd->prepare('SELECT jeuDansListe.idJeu, jeuDansListe.classement, jeux.* FROM jeuDansListe INNER JOIN jeux ON jeuDansListe.idJeu = jeux.idJeu WHERE idListe=? ORDER BY classement ASC');
 			$selecPrepare->execute($t);
 			$tab = $selecPrepare->fetchall();
 			if(isset($tab)){

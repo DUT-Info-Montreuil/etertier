@@ -59,16 +59,19 @@ class VueJeux extends VueGenerique{
 
 	public function afficherDetails($tab, $genres, $noteUtilisateur, $moyenne, $notesRedac){
 		if(isset($tab)){
+
+			echo '<div class="com">';
+
 			if(isset($tab['image']) && strlen($tab['image'])!=0 && file_exists('ressources/jeux/' . $tab['image'])){
-				echo '<img src=\'ressources/jeux/' . $tab['image'] . '\'/>';
+				echo '<img src=\'ressources/jeux/' . $tab['image'] . '\' class="size"/>';
 			}
 			
 			if($_SESSION['redacteur']==1) {	
-				echo '<p><a href="index.php?module=jeux&action=modifImgJeu&id='.$tab['idJeu'].'">Changer icone</a></p>';
+				echo '<p><a href="index.php?module=jeux&action=modifImgJeu&id='.$tab['idJeu'].'">Changer icône</a></p>';
 			}
 
 			//Infos du jeu
-			echo '<div><h3>' . $tab['nomJeu'] . '</h3>';
+			echo '<h1>' . $tab['nomJeu'] . '</h1>';
 
 			echo '<p>Genres: ';
 
@@ -82,7 +85,7 @@ class VueJeux extends VueGenerique{
 			//Div des notes
 			echo '<div>';
 				if(isset($_SESSION['login'])){
-					echo '<div><h3>Votre note:</h3>';
+					echo '<div class="com"><h3>Votre note:</h3>';
 					if(isset($noteUtilisateur)){
 						echo '<p>'.$noteUtilisateur.'</p>';
 						echo '<form action="index.php?module=jeux&action=noter&id='. $_GET['id'] .'" method="post">
@@ -100,15 +103,15 @@ class VueJeux extends VueGenerique{
 					echo '</div>';
 				}
 				if($moyenne == NULL){
-					echo '<div>Ce jeu n\'a encore aucune note.</div>';
+					echo '<div class="com">Ce jeu n\'a encore aucune note.</div>';
 				}
 				else{
-					echo '<div><h3>Moyenne utilisateur:</h3><p>'.$moyenne.'</p></div>';
+					echo '<div class="com"><h3>Moyenne utilisateur:</h3><p>'.$moyenne.'</p></div>';
 				}
 				if(isset($notesRedac[0])){
-					echo '<div><h3>Notes rédacteurs:</h3>';
+					echo '<div class="com"><h3>Notes rédacteurs:</h3>';
 					foreach($notesRedac as $cle=>$val){
-						echo'<p>'.$val['note'].'</p><p>-'.$val['login'].'</p>';
+						echo'<p>'.$val['note'].' - <a href=index.php?module=pageuser&id='.$val['id'].'>'.$val['login'].'</a></p>';
 					}
 					echo '</div>';
 				}

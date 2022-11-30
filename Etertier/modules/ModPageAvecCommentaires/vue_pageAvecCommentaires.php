@@ -22,7 +22,7 @@ class VuePageAvecCommentaires extends VueGenerique{
 				echo "</div>";
 			}
 		} else{
-			echo "Il n'y a pas encore de commentaires.";
+			echo "<div class='com'>Il n'y a pas encore de commentaires.</div>";
 		}
 
 	}
@@ -96,10 +96,10 @@ class VuePageAvecCommentaires extends VueGenerique{
 	}
 
 	public function afficher_formulaire(){
-		echo '<form action="index.php?module='.$_GET['module'].'&action=envoieComm&id='. $_GET['id'].'" method="post">
+		echo '<div class="com"><form action="index.php?module='.$_GET['module'].'&action=envoieComm&id='. $_GET['id'].'" method="post">
 			<p>Commentaire : <br/> <textarea name="texteCommentaire"></textarea></p>
 			<p><input type="submit" value="Envoyer"></p>
-		</form>';
+		</form></div>';
 	}
 
 	public function erreur_envoie_commentaire($messageErreur){

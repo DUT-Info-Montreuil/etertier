@@ -39,7 +39,7 @@ class ModeleUtilisateur extends Connexion{
 
     public function get_Listes($id){
         $t = array($id);
-        $selecPrepare = self::$bdd->prepare('SELECT * FROM listes WHERE auteur=?');
+        $selecPrepare = self::$bdd->prepare('SELECT * FROM listes WHERE auteur=? AND public=1');
         $selecPrepare->execute($t);
         $tab = $selecPrepare->fetchall();
         if(isset($tab)){

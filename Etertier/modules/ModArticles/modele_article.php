@@ -16,7 +16,7 @@ class ModeleArticle extends ModelePageAvecCommentaires{
 	public function get_details(){
 		if(isset($_GET['id'])){
 			$t = array($_GET['id']);
-			$selecPrepare = self::$bdd->prepare('SELECT nom, texte FROM articles WHERE idArticle=?');
+			$selecPrepare = self::$bdd->prepare('SELECT articles.nom, articles.texte, articles.date, membres.login, membres.id FROM articles INNER JOIN membres ON membres.id = articles.idAuteur  WHERE idArticle=?');
 			$selecPrepare->execute($t);
 			$tab = $selecPrepare->fetchall();
 			if(isset($tab[0])){

@@ -10,11 +10,11 @@ class VueUtilisateur extends VueGenerique{
     }
 
     public function affiche_Details_User($tab) {
-		echo '<img src="ressources/photoProfile/' . $tab['photoprofil'];
+		echo '<div class="com"><img src="ressources/photoProfile/' . $tab['photoprofil'];
 
-        echo '"/><h2>' . $tab['login'] . '</h2><br>';
+        echo '"/><h1>' . $tab['login'] . '</h1><br>';
 
-        echo $tab['bio'];
+        echo $tab['bio'] . "</div>";
     }
 
     public function afficher_liste_articles_recents($pseudo, $tab){

@@ -24,7 +24,8 @@ class VueArticle extends VuePageAvecCommentaires{
 
 	public function afficher_details($tab){
 		if(isset($tab)){
-			echo '<h2 class="text-center text-uppercase m-4">' . $tab['nom'] . '</h2><p class="com">' . $tab['texte'] . '</p>';
+			echo '<h2 class="text-center text-uppercase m-4">' . $tab['nom'] . '</h2><div><p>par <a href=index.php?module=pageuser&id='.$tab['id'].'>'.$tab['login'].'</a> le ' . $tab['date'] . '.</p></div><ul>';
+			echo '<p class="com">' . $tab['texte'] . '</p>';
 		}
 		else{
 			$this->afficher_erreur();
