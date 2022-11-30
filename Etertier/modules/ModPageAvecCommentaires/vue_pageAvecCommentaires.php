@@ -41,10 +41,10 @@ class VuePageAvecCommentaires extends VueGenerique{
 				$action2 = "enleverLikeDislike";
 			}
 		}
-		echo '<a href="index.php?module='.$_GET['module'].'&action='. $action1 .'&id='. $_GET['id'].'"><i class="' . $image1 . '"></i>';
-		echo '<p class="inline">'. $nbLike[0]['nbLike'] .'</p></a>  ';
-		echo '<a href="index.php?module='.$_GET['module'].'&action='. $action2 .'&id='. $_GET['id'].'"><i class="' . $image2 . '"></i>';
-		echo '<p class="inline">'. $nbDislike[0]['nbDislike'] .'</p></a>';
+		echo '<p><a href="index.php?module='.$_GET['module'].'&action='. $action1 .'&id='. $_GET['id'].'"><i class="' . $image1 . '"></i> ';
+		echo $nbLike[0]['nbLike'] .'</a>   ';
+		echo '<a href="index.php?module='.$_GET['module'].'&action='. $action2 .'&id='. $_GET['id'].'"><i class="' . $image2 . '"></i> ';
+		echo $nbDislike[0]['nbDislike'] .'</p></a>';
 
 
 	}
@@ -55,10 +55,10 @@ class VuePageAvecCommentaires extends VueGenerique{
 		$action2 = "disliker";
 		$image2 = "fa-regular fa-thumbs-down";
 	
-		echo '<i class="' . $image1 . '"></i>';
-		echo '<p class="inline">'. $nbLike[0]['nbLike'] .'</p>';
-		echo '<i class="' . $image2 . '"></i>';
-		echo '<p class="inline">'. $nbDislike[0]['nbDislike'] .'</p>';
+		echo '<p><i class="' . $image1 . '"></i> ';
+		echo $nbLike[0]['nbLike'] .'   ';
+		echo '<i class="' . $image2 . '"></i> ';
+		echo $nbDislike[0]['nbDislike'] .'</p>';
 
 
 	}
