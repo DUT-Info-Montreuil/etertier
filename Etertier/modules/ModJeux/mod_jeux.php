@@ -18,6 +18,10 @@ class ModJeux{
 					break;
 				case 'noter':	$cont->noter();
 					break;
+				case 'modifImgJeu': $cont->changerImgJeu();
+					break;
+				case 'upload': $cont->uploadImg();
+					break;
 				default: $cont->afficherListe();
 			}
 		}

@@ -62,6 +62,10 @@ class VueJeux extends VueGenerique{
 			if(isset($tab['image']) && strlen($tab['image'])!=0 && file_exists('ressources/jeux/' . $tab['image'])){
 				echo '<img src=\'ressources/jeux/' . $tab['image'] . '\'/>';
 			}
+			
+			if($_SESSION['redacteur']==1) {	
+				echo '<p><a href="index.php?module=jeux&action=modifImgJeu&id='.$tab['idJeu'].'">Changer icone</a></p>';
+			}
 
 			//Infos du jeu
 			echo '<div><h3>' . $tab['nomJeu'] . '</h3>';
@@ -116,13 +120,30 @@ class VueJeux extends VueGenerique{
 		if($_GET['module']=="jeuxListe"){
 			echo '<p><a href=\'index.php?module=listes&action=details&id=' . $_GET['liste'] . '\'><i class="fa-solid fa-arrow-left"></i> Retour à la liste.</a></p>';
 		}
-		else{
+		else{		
 			echo '<p><a href=\'index.php?module=jeux\'><i class="fa-solid fa-arrow-left"></i> Retour à la liste des jeux.</a></p>';
 		}
 	}
 
 	public function afficher_erreur(){
 		echo '<p>Erreur, cette page n\'existe pas.</p>';
+	}
+
+	public function form_upload_new_img_jeu() {
+		var_dump($_GET['id']);
+		?>
+			<div id="upload">
+			<form action="index.php?module=jeux&action=upload&id=<?php echo "" .$_GET['id'].""  ?>" method="post" enctype="multipart/form-data">
+				<h2>Changer icône du jeu</h2>
+				<p>taille fichier plus petit que 2 MO</p>
+				<input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+				<input type="file" name="newImgJeu" id="fileUpload">
+				<input type="submit" name="submit" value="Upload" class="boutonUpload">
+			</form>
+
+			
+			</div>
+		<?php
 	}
 
 }

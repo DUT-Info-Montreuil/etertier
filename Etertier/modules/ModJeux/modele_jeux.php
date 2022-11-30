@@ -30,7 +30,7 @@ public function getListeParGenre(){
 	
 }
 
-public function getGenre(){
+public function getGenre() {
 	if(isset($_GET['genre'])){
 		$t = array($_GET['genre']);
 		$selecPrepare = self::$bdd->prepare('SELECT nomGenre FROM genres WHERE idGenre=?');
@@ -42,8 +42,8 @@ public function getGenre(){
 		}
 	}
 	return NULL;
-	
-}
+}	
+
 
 public function getDetails(){
 	if(isset($_GET['id'])){
@@ -146,6 +146,46 @@ public function noter(){
 	exit();
 }
 
+	public function uploadImgJeu() {
+
+        if ($_FILES['newImgJeu']['error']) {
+                switch ($_FILES['photo']['error']){
+                case 1: // UPLOAD_ERR_INI_SIZE
+                  return "Le fichier dépasse la limite autorisée par le serveur (fichier php.ini) !";
+                  break;
+                case 2: // UPLOAD_ERR_FORM_SIZE
+                  return "Le fichier dépasse la limite autorisée dans le formulaire HTML !";
+                  break;
+                case 3: // UPLOAD_ERR_PARTIAL
+                  return "L'envoi du fichier a été interrompu pendant le transfert !";
+                  break;
+                case 4: // UPLOAD_ERR_NO_FILE
+                  return "Aucune image sélectionnée.";
+                  break;
+            }
+        }
+        else{
+            $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
+            $filename = $_FILES["newImgJeu"]["name"];
+            $filetype = $_FILES["newImgJeu"]["type"];
+
+
+            // Vérifie l'extension du fichier
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+            if(!array_key_exists($ext, $allowed)){
+                return "Erreur : Veuillez sélectionner un format de fichier valide ou veuillez renommer votre fichier avec l'extension a la fin.";
+            }
+            else{
+                move_uploaded_file($_FILES["newImgJeu"]["tmp_name"], "ressources/jeux/" . $_FILES["newImgJeu"]["name"]);
+
+                $selecPrepare = self::$bdd->prepare('UPDATE jeux SET jeux.image=? WHERE idJeu=?');
+                $selecPrepare->execute(array($_FILES["newImgJeu"]["name"], $_GET['id']));    
+
+                header('Location: index.php?module=jeux&id='.$_GET['id']);
+                exit();
+            }
+        }
+	}
 
 }
 
