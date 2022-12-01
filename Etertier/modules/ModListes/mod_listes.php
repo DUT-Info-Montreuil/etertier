@@ -20,6 +20,12 @@ class ModListes {
 				break;
 			case "enleverLikeDislike":{$cont->enlever("listes");}
 				break;
+			case "likerCom":{$cont->liker_com("listes");}
+				break;
+			case "dislikerCom":{$cont->disliker_com("listes");}
+				break;
+			case "enleverLikeDislikeCom":{$cont->enlever_com("listes");}
+				break;
 			default: $cont->liste();
 		}
 
