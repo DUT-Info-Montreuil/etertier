@@ -44,9 +44,14 @@ class VueCreationListe extends VueGenerique{
 
 					}
 
-					echo '<input class="text-center" type="submit" name="ajoutJeu" value="Ajouter un jeu" formaction="index.php?module=creationListe&action=ajoutJeu"><br/>';
-					echo '<input class="text-center" type="submit" name="poster" value="Poster la liste" formaction="index.php?module=creationListe&action=poster"><br/>';
-					echo '<input class="text-center" type="submit" name="supprimerTout" value="Tout supprimer" formaction="index.php?module=creationListe&action=supprimerTout">';
+					echo '<div class="com"><input class="text-center" type="submit" name="ajoutJeu" value="Ajouter un jeu" formaction="index.php?module=creationListe&action=ajoutJeu"></div>';
+					if(count($jeux)>1){
+						echo '<div class="com"><input class="text-center" type="submit" name="poster" value="Poster la liste" formaction="index.php?module=creationListe&action=poster"></div>';
+					}
+					else{
+						echo '<div class="com">Placez au moins deux jeux dans la liste pour la poster.</div>';
+					}
+					echo '<div class="com"><input class="text-center" type="submit" name="supprimerTout" value="Tout supprimer" formaction="index.php?module=creationListe&action=supprimerTout"></div>';
 				
 
 				?>

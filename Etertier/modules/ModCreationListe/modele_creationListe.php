@@ -161,8 +161,14 @@ class ModeleCreationListe extends Connexion{
 
 	public function poster(){
 		$t = array($_POST['idListe']);
-		$selecPrepare = self::$bdd->prepare('UPDATE listes SET public=1, dateCreation=NOW() WHERE idListe = ?');
+		$selecPrepare = self::$bdd->prepare('SELECT * FROM jeuDansListe WHERE idListe = ?');
 		$selecPrepare->execute($t);
+		$tab = $selecPrepare->fetchall();
+
+		if(count($tab)>1){
+			$selecPrepare = self::$bdd->prepare('UPDATE listes SET public=1, dateCreation=NOW() WHERE idListe = ?');
+			$selecPrepare->execute($t);
+		}
 	}
 
 }
