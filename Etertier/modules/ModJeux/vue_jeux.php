@@ -15,16 +15,20 @@ class VueJeux extends VueGenerique{
 		foreach($tab as $cle=>$val){
 			if(isset($val['image']) && strlen($val['image'])!=0 && file_exists('ressources/jeux/' . $val['image'])){
 				echo '<div class="d">
+				<div class=center>
 					<p class="text-center">
 						<a href="index.php?module=jeux&action=details&id=' . $val['idJeu'] . '"><img class="size" src=\'ressources/jeux/' . $val['image'] . '\'/></a>
 					</p>
+					</div>
 				</div>';
 			}
 			else{
 				echo '<div class="d">
+				<div class=center>
 					<p class="text-center">
 						<a href="index.php?module=jeux&action=details&id=' . $val['idJeu'] . '">' . $val['nomJeu'] . '</a>
 					</p>
+					</div>
 				</div>';
 			}
 		}
@@ -36,9 +40,11 @@ class VueJeux extends VueGenerique{
 			foreach($tab as $cle=>$val){
 				if(isset($val['image']) && strlen($val['image'])!=0 && file_exists('ressources/jeux/' . $val['image'])){
 					echo '<div class="d">
+					<div class=center>
 					<p class="text-center">
 						<a href="index.php?module=jeux&action=details&id=' . $val['idJeu'] . '"><img class="size" src=\'ressources/jeux/' . $val['image'] . '\'/></a>
 					</p>
+					</div>
 				</div>';
 				}
 				else{

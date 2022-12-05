@@ -10,10 +10,12 @@ class VueArticle extends VuePageAvecCommentaires{
 		echo '<h2 class="text-center text-uppercase m-4">Les Articles :</h2>';
 		foreach($tab as $cle=>$val){
 			echo '<div class="d">
+					<div class=center>
 				<p class="text-center">
 					<a href="index.php?module=article&action=details&id=' . $val['idArticle'] . '">' . $val['nom'] . '</a>
 				</p>
 				<p class="text-center">'."écrit par <a href=index.php?module=pageuser&id=".$val['idAuteur'].">".$val['login']."</a> le ".$val['date'].'</p>
+				</div>
 			</div>';
 		}
 
@@ -39,11 +41,13 @@ class VueArticle extends VuePageAvecCommentaires{
 	public function form_redac() {
 		?>
 		<h3>Rédaction d'un article :</h3>
+		<div class="formulaire">
 		<form action="index.php?module=article&action=redige" method="post">
-			<p>Titre de l'article : <input type="text" name="titreArticle" /></p>
-			<p>Texte de l'article : <textarea name="texteArticle"></textarea></p>
+			<p class="text_form">Titre de l'article : <input type="text" name="titreArticle" /></p>
+			<p class="text_form">Texte de l'article : <textarea name="texteArticle"></textarea></p>
 			<p><input type="submit" value="Ajouter"></p>
 		</form>
+	</div>
 		<?php	
 	}
 }

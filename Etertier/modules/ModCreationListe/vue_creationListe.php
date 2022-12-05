@@ -30,14 +30,18 @@ class VueCreationListe extends VueGenerique{
 						echo "<div>";
 						if(isset($val['image']) && strlen($val['image'])!=0 && file_exists('ressources/jeux/' . $val['image'])){
 							echo '<div class="d">
+							<div class="center">
 								<p class="text-center">
 									<img class="size" src=\'ressources/jeux/' . $val['image'] . '\'/>
 								</p>
+								</div>
 							</div>';
 						}
 						else{
 							echo '<div class="d">
+							<div class="center">
 								<p class="text-center">'.$val['nomJeu'].'</p>
+								</div>
 							</div>';
 						}				
 						echo '<input type="submit" name="supprimerJeu" value="Supprimer" formaction="index.php?module=creationListe&action=supprimerJeu&id='.$val['idJeu'].'"></div><br/>';
@@ -85,17 +89,23 @@ class VueCreationListe extends VueGenerique{
 		echo '<h2 class="text-uppercase m-4" id="'. $nomGenre .'">'. $nomGenre .':</h2>';
 		foreach($jeux as $cle=>$val){
 			if(isset($val['image']) && strlen($val['image'])!=0 && file_exists('ressources/jeux/' . $val['image'])){
-				echo '<div class="d">
-				<p class="text-center">
-					<a href="index.php?module=creationListe&action=ajouter&id=' . $val['idJeu'] . '"><img class="size" src=\'ressources/jeux/' . $val['image'] . '\'/></a>
-				</p>
-			</div>';
+				echo '
+				<div class="d">
+					<div class="center">
+						<p class="text-center">
+							<a href="index.php?module=creationListe&action=ajouter&id=' . $val['idJeu'] . '"><img class="size" src=\'ressources/jeux/' . $val['image'] . '\'/></a>
+						</p>
+					</div>
+				</div>';
 			}
 			else{
-				echo '<div class="d">
-					<p class="text-center">
-						<a href="index.php?module=creationListe&action=ajouter&id=' . $val['idJeu'] . '">' . $val['nomJeu'] . '</a>
-					</p>
+				echo '
+				<div class="d">
+					<div class="center">
+						<p class="text-center">
+							<a href="index.php?module=creationListe&action=ajouter&id=' . $val['idJeu'] . '">' . $val['nomJeu'] . '</a>
+						</p>
+					</div>
 				</div>';
 			}
 		}
