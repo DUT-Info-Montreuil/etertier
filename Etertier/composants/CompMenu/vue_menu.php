@@ -33,8 +33,7 @@
 									$this->contenu.="<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php?module=creerjeu\">Ajouter un jeu</a></li>";
 								}
 								}
-								$this->contenu.="<li class=\"nav-item\"><a class=\"nav-link\" href=\"index.php\">FAQ</a></li>
-							</ul>";
+								$this->contenu.="</ul>";
 				if(!isset($_SESSION['login'])){
 				  $this->contenu .= 
 				  "		<ul class=\"navbar-nav\">

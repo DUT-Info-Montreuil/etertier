@@ -26,9 +26,9 @@
 		?>
 	</main>
 
-	<footer>
+	<footer id ="footer">
 		<br>
-		<p class="text-center">ETERTIER : Tous droits réservés.</p>
+		<p>ETERTIER : Tous droits réservés.</p>
 	</footer>	
 
 </body>
