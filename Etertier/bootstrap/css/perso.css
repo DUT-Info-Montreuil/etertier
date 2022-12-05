@@ -1,7 +1,3 @@
-body {
-    background-image: url("etertier/Etertier/ressources/backgroundImage/918467.jpg");
-}
-
 .inline {
     display: inline-block;
 }
@@ -19,18 +15,9 @@ body {
     color: black;
     padding-left: 100px;
     font-size: 32px;
-    border-color: #121212;
+    border-color: #666666;
     border-width: 4px;
     border-style:double;
-}
-
-#footer{
-    position: absolute;
-    bottom: 0;
-    margin-right: 45%;
-    margin-left: 45%;
-    width: 10%;
-    text-align: center;
 }
 
 #texte{
@@ -46,7 +33,7 @@ body {
 
 .d {
     display: inline-block;
-    background-color: #121212;
+    background-color: #666666;
     margin-left: 50px;
     margin-top: 20px;
     width: 400px;

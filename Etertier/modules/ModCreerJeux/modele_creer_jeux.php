@@ -57,7 +57,7 @@ class ModeleCreerJeux extends Connexion{
 					//rename("ressources/jeux/" . $_FILES["photoNewJeu"]["name"], "ressources/jeux/".$_POST['nomNewJeu']);
 
 					$selecPrepare = self::$bdd->prepare('UPDATE jeux SET jeux.image=? WHERE idJeu=?');
-					$selecPrepare->execute(array($_FILES["photoNewJeu"]["name"], $_GET['id']));    
+					$selecPrepare->execute(array($_FILES["photoNewJeu"]["name"], $id[0]["idJeu"]));    
 
 				}
 			}

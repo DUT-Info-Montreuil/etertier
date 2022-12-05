@@ -28,7 +28,7 @@
 
 	<footer id ="footer">
 		<br>
-		<p>ETERTIER : Tous droits réservés.</p>
+		<p class="text-center">ETERTIER : Tous droits réservés.</p>
 	</footer>	
 
 </body>

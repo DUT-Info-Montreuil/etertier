@@ -23,7 +23,13 @@ class VueJeux extends VueGenerique{
 				</div>';
 			}
 			else{
-				
+				echo '<div class="d">
+					<div class="center">
+						<p class="text-center">
+							<a href="index.php?module=jeux&action=details&id=' . $val['idJeu'] . '">' . $val['nomJeu'] . '</a>
+						</p>
+						</div>
+					</div>';
 			}
 		}
 	}
@@ -43,9 +49,11 @@ class VueJeux extends VueGenerique{
 				}
 				else{
 					echo '<div class="d">
+					<div class="center">
 						<p class="text-center">
 							<a href="index.php?module=jeux&action=details&id=' . $val['idJeu'] . '">' . $val['nomJeu'] . '</a>
 						</p>
+						</div>
 					</div>';
 				}
 			}
