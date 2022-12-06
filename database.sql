@@ -172,11 +172,11 @@ INSERT INTO `genres_de_jeux` (`idJeu`, `idGenre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `jeudansliste`
+-- Structure de la table `jeuDansListe`
 --
 
-DROP TABLE IF EXISTS `jeudansliste`;
-CREATE TABLE IF NOT EXISTS `jeudansliste` (
+DROP TABLE IF EXISTS `jeuDansListe`;
+CREATE TABLE IF NOT EXISTS `jeuDansListe` (
   `idListe` bigint(20) UNSIGNED NOT NULL,
   `idJeu` bigint(20) UNSIGNED NOT NULL,
   `classement` int(11) NOT NULL,
@@ -185,10 +185,10 @@ CREATE TABLE IF NOT EXISTS `jeudansliste` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `jeudansliste`
+-- Déchargement des données de la table `jeuDansListe`
 --
 
-INSERT INTO `jeudansliste` (`idListe`, `idJeu`, `classement`) VALUES
+INSERT INTO `jeuDansListe` (`idListe`, `idJeu`, `classement`) VALUES
 (10, 27, 2),
 (10, 45, 1),
 (10, 48, 3),
@@ -495,9 +495,9 @@ ALTER TABLE `genres_de_jeux`
   ADD CONSTRAINT `FK_genres_de_jeux_jeux` FOREIGN KEY (`idJeu`) REFERENCES `jeux` (`idJeu`);
 
 --
--- Contraintes pour la table `jeudansliste`
+-- Contraintes pour la table `jeuDansListe`
 --
-ALTER TABLE `jeudansliste`
+ALTER TABLE `jeuDansListe`
   ADD CONSTRAINT `FK_jeuDansListe_jeux` FOREIGN KEY (`idJeu`) REFERENCES `jeux` (`idJeu`),
   ADD CONSTRAINT `FK_jeuDansListe_listes` FOREIGN KEY (`idListe`) REFERENCES `listes` (`idListe`);
 
